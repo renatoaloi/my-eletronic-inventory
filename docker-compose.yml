@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      API_KEY: my-secret-api-key
+      DATABASE_URL: sqlite:///./storage/database.db
+      STORAGE_PATH: ./storage
+    volumes:
+      - ./storage:/app/storage
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --header='X-Api-Key: my-secret-api-key' --output-document=/dev/null http://localhost:8000/api/v1/dashboard/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: /api
+        VITE_API_KEY: my-secret-api-key
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
