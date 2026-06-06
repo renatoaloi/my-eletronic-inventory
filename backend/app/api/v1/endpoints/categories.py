@@ -16,7 +16,7 @@ def get_category_service(db: Session = Depends(get_db)) -> CategoryService:
     return CategoryService(category_repo=SQLAlchemyCategoryRepository(db))
 
 
-@router.get("/", response_model=List[CategoryResponse])
+@router.get("", response_model=List[CategoryResponse])
 def list_categories(
     service: CategoryService = Depends(get_category_service),
 ):
@@ -28,7 +28,7 @@ def get_category(id: UUID, service: CategoryService = Depends(get_category_servi
     return service.get_by_id(id)
 
 
-@router.post("/", response_model=CategoryResponse, status_code=201)
+@router.post("", response_model=CategoryResponse, status_code=201)
 def create_category(
     dto: CategoryCreate,
     service: CategoryService = Depends(get_category_service),

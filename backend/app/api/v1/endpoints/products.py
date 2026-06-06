@@ -22,7 +22,7 @@ def get_product_service(db: Session = Depends(get_db)) -> ProductService:
     )
 
 
-@router.get("/", response_model=list[ProductResponse])
+@router.get("", response_model=list[ProductResponse])
 def list_products(
     category_id: Optional[UUID] = Query(None),
     type_id: Optional[UUID] = Query(None),
@@ -42,7 +42,7 @@ def list_products(
     return service.get_all(filters=filters)
 
 
-@router.post("/", response_model=ProductResponse, status_code=201)
+@router.post("", response_model=ProductResponse, status_code=201)
 def create_product(
     dto: ProductCreate,
     service: ProductService = Depends(get_product_service),
