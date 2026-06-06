@@ -18,7 +18,7 @@ def get_dashboard_service(db: Session = Depends(get_db)) -> DashboardService:
     )
 
 
-@router.get("/", response_model=DashboardResponse)
+@router.get("", response_model=DashboardResponse)
 def get_dashboard(
     service: DashboardService = Depends(get_dashboard_service),
 ):

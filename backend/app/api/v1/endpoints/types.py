@@ -16,7 +16,7 @@ def get_type_service(db: Session = Depends(get_db)) -> TypeService:
     return TypeService(type_repo=SQLAlchemyTypeRepository(db))
 
 
-@router.get("/", response_model=List[TypeResponse])
+@router.get("", response_model=List[TypeResponse])
 def list_types(
     service: TypeService = Depends(get_type_service),
 ):
@@ -28,7 +28,7 @@ def get_type(id: UUID, service: TypeService = Depends(get_type_service)):
     return service.get_by_id(id)
 
 
-@router.post("/", response_model=TypeResponse, status_code=201)
+@router.post("", response_model=TypeResponse, status_code=201)
 def create_type(
     dto: TypeCreate,
     service: TypeService = Depends(get_type_service),

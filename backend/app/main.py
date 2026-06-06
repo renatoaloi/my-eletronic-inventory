@@ -6,6 +6,7 @@ app = FastAPI(
     title="my-eletronic-inventory",
     description="Electronic Components Inventory Management System",
     version="1.0.0",
+    redirect_slashes=False,
 )
 
 app.add_middleware(
