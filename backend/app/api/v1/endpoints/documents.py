@@ -11,7 +11,7 @@ from app.infrastructure.storage.file_storage import FileStorage
 from app.application.services.document_service import DocumentService
 from app.application.dto.document_dto import DocumentResponse
 
-router = APIRouter(dependencies=[Depends(verify_api_key)])
+public_router = APIRouter()
 
 
 def get_document_service(db: Session = Depends(get_db)) -> DocumentService:
@@ -22,9 +22,12 @@ def get_document_service(db: Session = Depends(get_db)) -> DocumentService:
     )
 
 
-@router.get("/{id}/download")
+@public_router.get("/{id}/download")
 def download_document(id: UUID, service: DocumentService = Depends(get_document_service)):
     return service.download(id)
+
+
+router = APIRouter(dependencies=[Depends(verify_api_key)])
 
 
 @router.delete("/{id}", status_code=204)

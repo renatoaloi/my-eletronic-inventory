@@ -15,6 +15,6 @@ export async function deleteDocument(id) {
 }
 
 export function getDocumentUrl(id) {
-  const base = import.meta.env.VITE_API_BASE_URL || '/api'
+  const base = import.meta.env.VITE_API_BASE_URL || '/api/v1'
   return `${base}/documents/${id}/download`
 }

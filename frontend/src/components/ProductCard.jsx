@@ -9,7 +9,7 @@ export default function ProductCard({ product, onDelete }) {
   const navigate = useNavigate()
   const coverPhoto = product.photos?.find((p) => p.is_cover) || product.photos?.[0]
   const photoUrl = coverPhoto
-    ? `${import.meta.env.VITE_API_BASE_URL || '/api'}/photos/${coverPhoto.id}/file`
+    ? `${import.meta.env.VITE_API_BASE_URL || '/api/v1'}/photos/${coverPhoto.id}/file`
     : null
 
   return (

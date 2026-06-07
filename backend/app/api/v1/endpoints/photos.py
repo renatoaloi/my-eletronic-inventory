@@ -11,7 +11,7 @@ from app.infrastructure.storage.file_storage import FileStorage
 from app.application.services.photo_service import PhotoService
 from app.application.dto.photo_dto import PhotoResponse
 
-router = APIRouter(dependencies=[Depends(verify_api_key)])
+public_router = APIRouter()
 
 
 def get_photo_service(db: Session = Depends(get_db)) -> PhotoService:
@@ -22,9 +22,12 @@ def get_photo_service(db: Session = Depends(get_db)) -> PhotoService:
     )
 
 
-@router.get("/{id}/file")
+@public_router.get("/{id}/file")
 def get_photo_file(id: UUID, service: PhotoService = Depends(get_photo_service)):
     return service.get_file(id)
+
+
+router = APIRouter(dependencies=[Depends(verify_api_key)])
 
 
 @router.put("/{id}/cover")

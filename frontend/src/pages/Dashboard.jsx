@@ -60,7 +60,7 @@ export default function Dashboard() {
                   <div className="w-12 h-12 bg-neutral-100 rounded-lg flex-shrink-0 overflow-hidden">
                     {product.photos?.find((p) => p.is_cover) || product.photos?.[0] ? (
                       <img
-                        src={`${import.meta.env.VITE_API_BASE_URL || '/api'}/photos/${(product.photos.find((p) => p.is_cover) || product.photos[0]).id}/file`}
+                        src={`${import.meta.env.VITE_API_BASE_URL || '/api/v1'}/photos/${(product.photos.find((p) => p.is_cover) || product.photos[0]).id}/file`}
                         alt=""
                         className="w-full h-full object-cover"
                       />

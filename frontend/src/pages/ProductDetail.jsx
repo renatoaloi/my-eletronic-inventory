@@ -171,7 +171,7 @@ export default function ProductDetail() {
             {coverPhoto ? (
               <div className="aspect-square bg-neutral-100 rounded-lg overflow-hidden cursor-pointer" onClick={() => setPhotoModal(coverPhoto)}>
                 <img
-                  src={`${import.meta.env.VITE_API_BASE_URL || '/api'}/photos/${coverPhoto.id}/file`}
+                  src={`${import.meta.env.VITE_API_BASE_URL || '/api/v1'}/photos/${coverPhoto.id}/file`}
                   alt={product.name}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
@@ -192,7 +192,7 @@ export default function ProductDetail() {
                 {product.photos.map((photo) => (
                   <div key={photo.id} className="relative aspect-square bg-neutral-100 rounded-lg overflow-hidden group">
                     <img
-                      src={`${import.meta.env.VITE_API_BASE_URL || '/api'}/photos/${photo.id}/file`}
+                      src={`${import.meta.env.VITE_API_BASE_URL || '/api/v1'}/photos/${photo.id}/file`}
                       alt=""
                       className="w-full h-full object-cover cursor-pointer"
                       onClick={() => setPhotoModal(photo)}
@@ -250,7 +250,7 @@ export default function ProductDetail() {
         {photoModal && (
           <div className="flex items-center justify-center">
             <img
-              src={`${import.meta.env.VITE_API_BASE_URL || '/api'}/photos/${photoModal.id}/file`}
+              src={`${import.meta.env.VITE_API_BASE_URL || '/api/v1'}/photos/${photoModal.id}/file`}
               alt=""
               className="max-w-full max-h-[80vh] object-contain rounded-lg"
             />

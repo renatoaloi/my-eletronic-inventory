@@ -378,7 +378,7 @@ export default function ProductForm() {
               {photos.map((photo) => (
                 <div key={photo.id} className="relative group aspect-square bg-neutral-100 rounded-lg overflow-hidden">
                   <img
-                    src={`${import.meta.env.VITE_API_BASE_URL || '/api'}/photos/${photo.id}/file`}
+                    src={`${import.meta.env.VITE_API_BASE_URL || '/api/v1'}/photos/${photo.id}/file`}
                     alt=""
                     className="w-full h-full object-cover"
                   />
