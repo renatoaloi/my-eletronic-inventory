@@ -54,7 +54,7 @@ def upgrade() -> None:
         sa.Column("file_name", sa.String(255), nullable=False),
         sa.Column("file_path", sa.String(512), nullable=False),
         sa.Column("product_id", sa.String(36), sa.ForeignKey("products.id"), nullable=False),
-        sa.Column("is_cover", sa.Boolean(), nullable=False, server_default="0"),
+        sa.Column("is_cover", sa.Boolean(), nullable=False, server_default=sa.text("false")),
     )
 
     op.create_table(

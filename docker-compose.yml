@@ -7,7 +7,8 @@ services:
       - "8000:8000"
     environment:
       API_KEY: my-secret-api-key
-      DATABASE_URL: sqlite:///./storage/database.db
+      SUPABASE_URL: ${SUPABASE_URL}
+      SUPABASE_DATABASE_URL: ${SUPABASE_DATABASE_URL}
       STORAGE_PATH: ./storage
     volumes:
       - ./storage:/app/storage
